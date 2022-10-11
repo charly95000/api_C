@@ -5,7 +5,7 @@ exports.createArticle = (req, res, next) => {
   const article = new Article({
     title: req.body.title,
     description: req.body.description,
-    imageUrl: `http://localhost:8080/images/${req.file.filename}`,
+    imageUrl: `https://apiprojetreact.herokuapp.com/images/${req.file.filename}`,
     //userId: req.body.userId
   });
   console.log(article)
