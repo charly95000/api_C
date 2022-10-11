@@ -60,6 +60,21 @@ exports.signup = (req, res, next) => {//mmmm
     );
   };
 
+  exports.getAllUsers = (req, res, next) => {
+    User.find()//.populate('userId')
+    .then(
+      (users) => {
+        res.status(200).json(users);
+      }
+    ).catch(
+      (error) => {
+        res.status(400).json({
+          error: error
+        });
+      }
+    );
+  };
+
   exports.addFriend = (req,res, next) =>{
     User.findOneAndUpdate({_id: req.body.userId},{ $push: { friends: req.body.friendId  } })
     .then(
