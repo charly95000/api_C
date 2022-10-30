@@ -2,8 +2,10 @@ const express = require('express')
 const mongoose = require('mongoose');
 const articlesRoutes = require('./routes/article-route');
 const usersRoutes = require('./routes/user-route');
+const categoriesRoutes = require('./routes/category-route')
 
 const path = require('path');
+const { application } = require('express');
 const app = express()
 require('dotenv').config();
 
@@ -27,6 +29,7 @@ app.use((req, res, next) => {
 });
 app.use('/article', articlesRoutes);
 app.use('/user', usersRoutes);
+app.use('/category',categoriesRoutes)
 
 
 

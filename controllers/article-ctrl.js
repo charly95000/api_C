@@ -6,7 +6,7 @@ exports.createArticle = (req, res, next) => {
     title: req.body.title,
     description: req.body.description,
     imageUrl: `https://apiprojetreact.herokuapp.com/images/${req.file.filename}`,
-    //userId: req.body.userId
+    categoryId: req.body.categoryId
   });
   console.log(article)
   article.save().then(
@@ -41,6 +41,7 @@ exports.getOneArticle = (req, res, next) => {
 };
 
 exports.modifyArticle = (req, res, next) => {
+  
   const article = new Article({
     _id: req.params.id,
     title: req.body.title,
@@ -87,7 +88,7 @@ exports.deleteArticle = (req, res, next) => {
 };
 
 exports.getAllArticles = (req, res, next) => {
-  Article.find()//.populate('userId')
+  Article.find().populate('categoryId')
   .then(
     (articles) => {
       res.status(200).json(articles);
