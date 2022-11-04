@@ -47,7 +47,7 @@ exports.modifyArticle = (req, res, next) => {
     title: req.body.title,
     description: req.body.description,
     imageUrl: `https://apiprojetreact.herokuapp.com/images/${req.file.filename}`,
-    //userId: req.body.userId
+    categoryId: req.body.categoryId
   });
   Article.updateOne({_id: req.params.id}, article).then(
     () => {

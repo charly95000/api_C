@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const articlesRoutes = require('./routes/article-route');
 const usersRoutes = require('./routes/user-route');
 const categoriesRoutes = require('./routes/category-route')
+const productsRoutes = require('./routes/product-route')
 
 const path = require('path');
 const { application } = require('express');
@@ -10,7 +11,7 @@ const app = express()
 require('dotenv').config();
 
 
-mongoose.connect('mongodb+srv://root:root@cluster0.npvjt.mongodb.net/dbClandice?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://root:root@cluster0.npvjt.mongodb.net/db_candice?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
@@ -30,6 +31,7 @@ app.use((req, res, next) => {
 app.use('/article', articlesRoutes);
 app.use('/user', usersRoutes);
 app.use('/category',categoriesRoutes)
+app.use('/product',productsRoutes)
 
 
 
